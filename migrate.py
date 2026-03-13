@@ -130,4 +130,10 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import traceback
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        print(f"\nCRITICAL MIGRATION ERROR: {e}")
+        traceback.print_exc()
+        sys.exit(1)
