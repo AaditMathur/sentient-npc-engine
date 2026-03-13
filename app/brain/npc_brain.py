@@ -24,7 +24,7 @@ from app.models import (
 from app.database import NPCRecord, cache_get, cache_set, cache_delete
 from app.emotion.engine import emotion_engine
 from app.memory.engine import (
-    memory_engine, MemoryQuery as _MemoryQuery,
+    memory_engine,
     create_interaction_memory, create_world_event_memory,
 )
 from app.personality.engine import get_personality_prompt_block  # noqa: F401

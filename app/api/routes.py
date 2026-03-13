@@ -361,7 +361,7 @@ async def _run_crime_cascade(rumor_network, crime: CrimeRecord, db) -> None:
         
         # Record causality
         from app.causality.tracker import causality_tracker, CausalEventType
-        crime_node = causality_tracker.record_event(
+        causality_tracker.record_event(
             event_type=CausalEventType.CRIME,
             description=f"{crime.crime_type.value} committed by {crime.perpetrator_id}",
             primary_actor_id=crime.perpetrator_id,

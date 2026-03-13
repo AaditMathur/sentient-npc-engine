@@ -401,7 +401,6 @@ async def get_dream_history(
 @router.get("/analytics/world-state", tags=["Analytics"])
 async def get_world_state_analytics(db: AsyncSession = Depends(get_db)):
     """Get comprehensive world state analytics."""
-    from app.emotion.contagion import emotional_contagion
     from app.causality.tracker import causality_tracker
     from app.culture.legends import cultural_memory
     from app.quests.generator import quest_generator

@@ -258,7 +258,6 @@ class DynamicQuestGenerator:
         crime: CrimeRecord,
     ) -> Quest:
         """Generate a revenge quest."""
-        template = self.quest_templates[QuestType.REVENGE]
         
         # Calculate rewards based on severity and NPC wealth
         base_gold = int(crime.severity * 500)
