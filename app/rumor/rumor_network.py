@@ -17,14 +17,12 @@ from __future__ import annotations
 
 import asyncio
 from datetime import datetime, timezone
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Any, Optional
 
 from app.models import (
     CrimeRecord, CrimeType, RumorRecord, AwarenessLevel,
-    NPCState, NPCBehaviorModifier, WorldEvent, EventType,
-    EmotionVector, Memory, MemoryType,
+    NPCState, NPCBehaviorModifier,
 )
-from app.world.events import rumor_propagator, event_producer
 from app.social.graph import social_graph
 from app.memory.engine import memory_engine, create_world_event_memory
 from app.emotion.engine import emotion_engine

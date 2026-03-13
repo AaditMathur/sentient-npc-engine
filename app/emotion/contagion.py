@@ -13,8 +13,7 @@ contagion strength and resistance.
 from __future__ import annotations
 
 import math
-from typing import List, Dict, Tuple, Optional
-from datetime import datetime, timezone
+from typing import List, Dict, Any, Optional
 
 from app.models import NPCState, EmotionVector, PersonalityVector, Relationship
 import structlog

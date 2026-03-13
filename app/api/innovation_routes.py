@@ -11,8 +11,8 @@ Endpoints for:
 """
 from __future__ import annotations
 
-from typing import List, Optional, Dict, Any
-from fastapi import APIRouter, HTTPException, Depends, Query, BackgroundTasks
+from typing import List, Optional
+from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
 

@@ -12,7 +12,7 @@ GET  /health           → Health check
 """
 from __future__ import annotations
 
-from typing import List, Optional, Dict, Any
+from typing import Optional, Dict, Any
 from fastapi import APIRouter, HTTPException, Depends, Query, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -20,7 +20,7 @@ from app.models import (
     CreateNPCRequest, InteractRequest, InteractResponse,
     NPCStateResponse, WorldEventRequest, WorldEvent,
     MemoryQuery, MemoryType, CrimeReportRequest, CrimeRecord,
-    CrimeType, EventType,
+    EventType,
 )
 from app.database import get_db
 from app.brain.npc_brain import npc_brain

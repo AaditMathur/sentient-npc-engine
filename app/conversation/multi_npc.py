@@ -18,8 +18,8 @@ import anthropic
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import (
-    NPCState, EmotionVector, Memory, MemoryType,
-    Relationship, RelationshipType, Goal, GoalStatus,
+    NPCState,
+    Relationship, RelationshipType,
 )
 from app.personality.engine import get_personality_prompt_block
 from app.config import get_settings

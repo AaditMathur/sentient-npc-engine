@@ -10,24 +10,24 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
-from typing import List, Optional, Dict, Any, Tuple
+from typing import List, Optional, Dict, Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from app.models import (
-    NPCState, PersonalityVector, EmotionVector, Memory,
-    MemoryQuery, MemoryType, Goal, GoalStatus,
+    NPCState, PersonalityVector, EmotionVector,
+    MemoryQuery, Goal, GoalStatus,
     InteractRequest, InteractResponse, WorldEvent,
     CreateNPCRequest,
 )
 from app.database import NPCRecord, cache_get, cache_set, cache_delete
 from app.emotion.engine import emotion_engine
 from app.memory.engine import (
-    memory_engine, MemoryQuery,
+    memory_engine, MemoryQuery as _MemoryQuery,
     create_interaction_memory, create_world_event_memory,
 )
-from app.personality.engine import get_personality_prompt_block
+from app.personality.engine import get_personality_prompt_block  # noqa: F401
 from app.goals.planner import goal_manager, GOAL_LIBRARY
 from app.social.graph import social_graph
 from app.dialogue.generator import dialogue_generator
@@ -36,8 +36,6 @@ import structlog
 
 # Import new innovation systems
 from app.causality.tracker import causality_tracker, CausalEventType
-from app.culture.legends import cultural_memory
-from app.quests.generator import quest_generator
 
 logger = structlog.get_logger()
 settings = get_settings()

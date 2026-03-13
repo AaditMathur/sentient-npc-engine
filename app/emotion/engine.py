@@ -7,7 +7,7 @@ Implements a 8-dimensional emotion vector with:
 """
 from __future__ import annotations
 import math
-from typing import Dict, Optional
+from typing import Dict
 from app.models import EmotionVector, PersonalityVector, EventType
 
 

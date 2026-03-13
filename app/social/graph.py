@@ -10,7 +10,7 @@ Also supports Player nodes for player-NPC relationships.
 """
 from __future__ import annotations
 
-from typing import List, Optional, Dict, Any, Tuple
+from typing import List, Optional, Dict, Any
 from app.models import Relationship, RelationshipType, NPCState
 from app.database import get_neo4j_driver
 
@@ -247,11 +247,11 @@ class SocialGraph:
             lines.append(f"You have moderate trust in {rel.target_name}.")
 
         if rel.fear > 0.5:
-            lines.append(f"They intimidate you.")
+            lines.append("They intimidate you.")
         if rel.friendship > 0.7:
-            lines.append(f"You consider them a friend.")
+            lines.append("You consider them a friend.")
         elif rel.friendship < 0.3:
-            lines.append(f"You dislike them.")
+            lines.append("You dislike them.")
         if rel.interaction_count > 0:
             lines.append(f"You have interacted {rel.interaction_count} time(s) before.")
 

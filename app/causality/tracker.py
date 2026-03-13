@@ -284,7 +284,7 @@ class CausalityTracker:
             List of predicted consequence scenarios
         """
         event_type = hypothetical_event.get("event_type")
-        actor_id = hypothetical_event.get("actor_id")
+        _actor_id = hypothetical_event.get("actor_id")
         
         # Find similar historical events
         similar_events = [

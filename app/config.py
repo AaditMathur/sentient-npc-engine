@@ -1,6 +1,9 @@
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 
 class Settings(BaseSettings):
+    model_config = ConfigDict(env_file=".env")
+    
     app_version: str = "3.0.0"
     debug: bool = False
     
@@ -37,9 +40,6 @@ class Settings(BaseSettings):
     cache_npc_state_ttl: int = 300
     max_active_goals: int = 3
     memory_decay_rate: float = 0.01
-
-    class Config:
-        env_file = ".env"
 
 def get_settings():
     return Settings()

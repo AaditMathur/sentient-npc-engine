@@ -24,8 +24,8 @@ from enum import Enum
 from pydantic import BaseModel, Field
 
 from app.models import (
-    NPCState, Goal, GoalStatus, EmotionVector,
-    CrimeRecord, CrimeType, WorldEvent, EventType,
+    NPCState, Goal,
+    CrimeRecord, CrimeType,
 )
 import structlog
 
@@ -93,7 +93,7 @@ class Quest(BaseModel):
     target_location: Optional[str] = None
     
     # Metadata
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     expires_at: Optional[datetime] = None
     completed_at: Optional[datetime] = None
     
@@ -299,7 +299,7 @@ class DynamicQuestGenerator:
             target_npc_id=crime.perpetrator_id,
             emotional_intensity=npc.emotion_state.anger,
             urgency=urgency,
-            expires_at=datetime.utcnow() + timedelta(days=7),
+            expires_at=datetime.now(timezone.utc) + timedelta(days=7),
         )
         
         self.active_quests[quest.quest_id] = quest
@@ -357,7 +357,7 @@ class DynamicQuestGenerator:
             target_npc_id=crime.perpetrator_id,
             emotional_intensity=crime.severity,
             urgency=0.7,
-            expires_at=datetime.utcnow() + timedelta(days=14),
+            expires_at=datetime.now(timezone.utc) + timedelta(days=14),
         )
         
         self.active_quests[quest.quest_id] = quest
@@ -407,7 +407,7 @@ class DynamicQuestGenerator:
             target_npc_id=crime.perpetrator_id,
             emotional_intensity=npc.emotion_state.sadness + npc.emotion_state.anger,
             urgency=0.6,
-            expires_at=datetime.utcnow() + timedelta(days=10),
+            expires_at=datetime.now(timezone.utc) + timedelta(days=10),
         )
         
         self.active_quests[quest.quest_id] = quest
@@ -458,7 +458,7 @@ class DynamicQuestGenerator:
             target_location=crime.location,
             emotional_intensity=npc.personality.curiosity,
             urgency=0.4,
-            expires_at=datetime.utcnow() + timedelta(days=21),
+            expires_at=datetime.now(timezone.utc) + timedelta(days=21),
         )
         
         self.active_quests[quest.quest_id] = quest
@@ -526,7 +526,7 @@ class DynamicQuestGenerator:
                 continue
             
             # Check expiration
-            if quest.expires_at and quest.expires_at < datetime.utcnow():
+            if quest.expires_at and quest.expires_at < datetime.now(timezone.utc):
                 quest.status = "expired"
                 continue
             

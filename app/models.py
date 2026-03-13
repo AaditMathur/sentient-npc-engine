@@ -5,9 +5,15 @@ These are the canonical data structures used across all subsystems.
 from __future__ import annotations
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 import uuid
+
+
+# Helper function for timezone-aware datetime
+def utc_now() -> datetime:
+    """Return current UTC time as timezone-aware datetime."""
+    return datetime.now(timezone.utc)
 
 
 # ─────────────────────────────────────────────
@@ -186,7 +192,7 @@ class Injury(BaseModel):
     healing_rate: float = 0.1
     affects_mobility: bool = False
     affects_combat: bool = False
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=utc_now)
 
 
 class Disease(BaseModel):
@@ -196,7 +202,7 @@ class Disease(BaseModel):
     contagious: bool = False
     symptoms: List[str] = []
     progression_rate: float = 0.1
-    contracted_at: datetime = Field(default_factory=datetime.utcnow)
+    contracted_at: datetime = Field(default_factory=utc_now)
 
 
 class StatusEffect(BaseModel):
@@ -371,7 +377,7 @@ class TraumaMemory(BaseModel):
     event_description: str
     severity: float = Field(0.5, ge=0.0, le=1.0)
     triggers: List[str] = []
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=utc_now)
 
 
 class Addiction(BaseModel):
@@ -447,7 +453,7 @@ class LifeEvent(BaseModel):
     event_name: str
     description: str
     impact_level: float = Field(0.5, ge=0.0, le=1.0)
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=utc_now)
     age_at_event: Optional[int] = None
 
 
@@ -537,7 +543,7 @@ class Memory(BaseModel):
     emotion_at_time: EmotionVector
     importance: float = Field(0.5, ge=0.0, le=1.0)  # 0=trivial, 1=life-changing
     emotional_intensity: float = Field(0.5, ge=0.0, le=1.0)
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=utc_now)
     embedding: Optional[List[float]] = None  # populated by memory engine
     tags: List[str] = []
     # Decay tracking
@@ -579,7 +585,7 @@ class Goal(BaseModel):
     status: GoalStatus = GoalStatus.PENDING
     progress: float = 0.0
     action_plan: List[str] = []        # ordered list of action names
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
     deadline: Optional[datetime] = None
     required_resources: Dict[str, float] = {}
 
@@ -615,7 +621,7 @@ class WorldEvent(BaseModel):
     affected_npcs: List[str] = []
     radius: float = 100.0               # spatial influence radius
     severity: float = Field(0.5, ge=0.0, le=1.0)
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=utc_now)
     metadata: Dict[str, Any] = {}
     propagates_as_rumor: bool = True
 
@@ -631,7 +637,7 @@ class CrimeRecord(BaseModel):
     location: Optional[str] = None
     severity: float = Field(0.5, ge=0.0, le=1.0)  # 0=minor, 1=heinous
     witnesses: List[str] = []               # NPC IDs who directly saw it
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=utc_now)
     metadata: Dict[str, Any] = {}
 
 
@@ -650,7 +656,7 @@ class RumorRecord(BaseModel):
     believed_by: List[str] = []             # NPC IDs who believe it
     spread_chain: List[Dict[str, Any]] = [] # [{spreader, receiver, hop, timestamp}]
     is_active: bool = True                  # still spreading?
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
 
 
 class NPCBehaviorModifier(BaseModel):
@@ -711,8 +717,8 @@ class NPCState(BaseModel):
     # Status
     is_active: bool = True
     last_interaction: Optional[datetime] = None
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
+    updated_at: datetime = Field(default_factory=utc_now)
 
     # Simulation tracking
     sim_tick: int = 0

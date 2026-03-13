@@ -17,12 +17,12 @@ Dreams can:
 from __future__ import annotations
 
 import random
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Optional
 from datetime import datetime, timezone
 
 from pydantic import BaseModel, Field
 
-from app.models import NPCState, EmotionVector, Memory, Goal, GoalStatus
+from app.models import NPCState, EmotionVector, Memory, GoalStatus
 import structlog
 
 logger = structlog.get_logger()
@@ -505,7 +505,7 @@ class DreamEngine:
             from app.goals.planner import GOAL_LIBRARY
             if dream.inspired_goal in GOAL_LIBRARY:
                 new_goal = GOAL_LIBRARY[dream.inspired_goal].model_copy()
-                new_goal.description += f" (inspired by a dream)"
+                new_goal.description += " (inspired by a dream)"
                 npc.goals.append(new_goal)
         
         logger.info(

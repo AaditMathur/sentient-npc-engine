@@ -13,7 +13,8 @@ Returns: { dialogue, npc_action, emotion_update, memory_tags }
 from __future__ import annotations
 
 import json
-from typing import List, Optional, Dict, Any, Tuple
+from datetime import datetime, timezone
+from typing import List, Optional, Dict, Any
 
 import anthropic
 from tenacity import retry, stop_after_attempt, wait_exponential
@@ -23,7 +24,6 @@ from app.models import (
     EmotionVector,
     Memory,
     Relationship,
-    Goal,
     GoalStatus,
 )
 from app.personality.engine import get_personality_prompt_block
@@ -184,10 +184,10 @@ Anger: {emotion.anger:.2f} | Sadness: {emotion.sadness:.2f} | Surprise: {emotion
             mem_lines = []
             for mem in memories[:5]:
                 age = "recently" if (
-                    (__import__("datetime").datetime.utcnow() - mem.timestamp).days < 7
+                    (datetime.now(timezone.utc) - mem.timestamp).days < 7
                 ) else "some time ago"
                 mem_lines.append(f"  - [{age}] {mem.event}")
-            blocks.append(f"RELEVANT MEMORIES:\n" + "\n".join(mem_lines))
+            blocks.append("RELEVANT MEMORIES:\n" + "\n".join(mem_lines))
         else:
             blocks.append("RELEVANT MEMORIES:\n  - No specific memories of this person.")
 

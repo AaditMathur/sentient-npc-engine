@@ -14,11 +14,10 @@ Events are broadcast to affected NPCs based on:
 from __future__ import annotations
 
 import json
-import asyncio
-from typing import List, Optional, Dict, Any
-from datetime import datetime
+from typing import List, Dict
+from datetime import datetime, timezone
 
-from app.models import WorldEvent, EventType, NPCState
+from app.models import WorldEvent, EventType
 from app.database import get_redis
 from app.config import get_settings
 import structlog
@@ -90,7 +89,7 @@ class WorldEventProducer:
                 "event_id": event_id,
                 "reaction": reaction,
                 "emotion_delta": json.dumps(emotion_delta),
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
             },
             maxlen=50000,
         )

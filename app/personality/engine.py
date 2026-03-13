@@ -4,7 +4,7 @@ Modulates dialogue, goal selection, and negotiation based on
 the NPC's personality vector.
 """
 from __future__ import annotations
-from typing import List, Dict, Tuple
+from typing import List, Dict
 from app.models import PersonalityVector, EmotionVector, Goal
 
 

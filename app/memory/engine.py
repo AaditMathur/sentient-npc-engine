@@ -6,10 +6,9 @@ Retrieval Score = semantic_similarity × importance × recency
 """
 from __future__ import annotations
 
-import uuid
 import math
 from datetime import datetime, timezone
-from typing import List, Optional, Dict, Any, Tuple
+from typing import List, Optional, Tuple
 
 from qdrant_client.models import (
     PointStruct,

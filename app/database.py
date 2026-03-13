@@ -10,10 +10,10 @@ from typing import Optional, Any
 import redis.asyncio as aioredis
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import Column, String, Float, Boolean, Integer, DateTime, Text, JSON
+from sqlalchemy import Column, String, Boolean, Integer, DateTime, Text, JSON
 from sqlalchemy.sql import func
 from qdrant_client import AsyncQdrantClient
-from qdrant_client.models import VectorParams, Distance, PointStruct
+from qdrant_client.models import VectorParams, Distance
 from neo4j import AsyncGraphDatabase
 
 from app.config import get_settings

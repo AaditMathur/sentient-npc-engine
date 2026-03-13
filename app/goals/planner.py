@@ -10,7 +10,7 @@ Pipeline:
 from __future__ import annotations
 
 import heapq
-from typing import List, Dict, Optional, Any, Tuple, Set
+from typing import List, Dict, Optional, Any, Set
 from dataclasses import dataclass, field
 from copy import deepcopy
 
