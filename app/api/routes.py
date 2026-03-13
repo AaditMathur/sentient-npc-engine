@@ -354,9 +354,67 @@ async def report_crime(
 async def _run_crime_cascade(rumor_network, crime: CrimeRecord, db) -> None:
     """Background task to run the full rumor cascade."""
     try:
+        # Run rumor cascade
         rumor = await rumor_network.cascade(
             crime=crime, witness_npc_ids=crime.witnesses, db=db, max_hops=3,
         )
+        
+        # Record causality
+        from app.causality.tracker import causality_tracker, CausalEventType
+        crime_node = causality_tracker.record_event(
+            event_type=CausalEventType.CRIME,
+            description=f"{crime.crime_type.value} committed by {crime.perpetrator_id}",
+            primary_actor_id=crime.perpetrator_id,
+            affected_actors=[crime.victim_id] if crime.victim_id else [],
+            severity=crime.severity,
+            location=crime.location,
+            metadata={"crime_id": crime.crime_id},
+        )
+        
+        # Create legend if significant
+        from app.culture.legends import cultural_memory
+        if crime.severity > 0.6 and len(crime.witnesses) >= 2:
+            legend = cultural_memory.create_legend_from_event(
+                event_description=crime.description or f"A {crime.crime_type.value} was committed",
+                protagonist_id=crime.perpetrator_id,
+                protagonist_name=crime.perpetrator_id,
+                event_type=crime.crime_type.value,
+                severity=crime.severity,
+                witnesses=crime.witnesses,
+                location=crime.location,
+                metadata={"crime_id": crime.crime_id},
+            )
+            if legend:
+                logger.info("legend_created_from_crime", legend_id=legend.legend_id, crime_id=crime.crime_id)
+        
+        # Generate quests for affected NPCs
+        from app.quests.generator import quest_generator
+        from app.brain.npc_brain import npc_brain
+        
+        # Victim generates quest
+        if crime.victim_id:
+            victim = await npc_brain.repo.get(db, crime.victim_id)
+            if victim:
+                quest = quest_generator.generate_quest_from_crime(
+                    npc=victim,
+                    crime=crime,
+                    awareness_level="victim",
+                )
+                if quest:
+                    logger.info("quest_generated_from_crime", quest_id=quest.quest_id, crime_id=crime.crime_id)
+        
+        # Witnesses might generate quests
+        for witness_id in crime.witnesses[:2]:  # Limit to first 2 witnesses
+            witness = await npc_brain.repo.get(db, witness_id)
+            if witness:
+                quest = quest_generator.generate_quest_from_crime(
+                    npc=witness,
+                    crime=crime,
+                    awareness_level="direct_witness",
+                )
+                if quest:
+                    logger.info("quest_generated_by_witness", quest_id=quest.quest_id, witness=witness.name)
+        
         logger.info(
             "api_crime_cascade_complete",
             crime_id=crime.crime_id,

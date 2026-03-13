@@ -34,11 +34,23 @@ from app.dialogue.generator import dialogue_generator
 from app.config import get_settings
 import structlog
 
+# Import new innovation systems
+from app.causality.tracker import causality_tracker, CausalEventType
+from app.culture.legends import cultural_memory
+from app.quests.generator import quest_generator
+
 logger = structlog.get_logger()
 settings = get_settings()
 
 
-# ────────────────────────────────────────�    async def create(self, db: AsyncSession, npc: NPCState) -> NPCState:
+# ─────────────────────────────────────────────
+# NPC REPOSITORY
+# ─────────────────────────────────────────────
+
+class NPCRepository:
+    """Handles NPC state persistence and caching."""
+
+    async def create(self, db: AsyncSession, npc: NPCState) -> NPCState:
         # Robust serialization: ensure everything is converted to dicts for JSON columns
         record = NPCRecord(
             npc_id=npc.npc_id,
@@ -55,14 +67,6 @@ settings = get_settings()
             speech_style=npc.speech_style,
             knowledge_base_json=npc.knowledge_base,
             world_knowledge_json=npc.world_knowledge,
-            is_active=npc.is_active,
-            sim_tick=npc.sim_tick,
-            offline_ticks=npc.offline_ticks,
-        )
-        db.add(record)
-        await db.flush()
-        return npc
-ge,
             is_active=npc.is_active,
             sim_tick=npc.sim_tick,
             offline_ticks=npc.offline_ticks,
@@ -336,7 +340,17 @@ class NPCBrain:
         memory_id = await memory_engine.store(new_memory)
         npc.recent_memory_ids.append(memory_id)
 
-        # 10. Persist state
+        # 10. Record causality
+        causality_tracker.record_event(
+            event_type=CausalEventType.PLAYER_ACTION,
+            description=f"Player {request.player_id} interacted with {npc.name}: {request.player_message[:50]}",
+            primary_actor_id=request.player_id,
+            affected_actors=[npc.npc_id],
+            severity=importance,
+            location=npc.location,
+        )
+        
+        # 11. Persist state
         npc.last_interaction = datetime.now(timezone.utc)
         await self.repo.save(db, npc)
 

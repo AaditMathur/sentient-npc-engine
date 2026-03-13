@@ -65,9 +65,30 @@ app.add_middleware(
 # Routes
 app.include_router(router, prefix="/api/v1")
 
+# Innovation routes
+from app.api.innovation_routes import router as innovation_router
+app.include_router(innovation_router, prefix="/api/v1")
+
 # Prometheus metrics endpoint
 metrics_app = make_asgi_app()
 app.mount("/metrics", metrics_app)
+
+# Serve static dashboard
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
+
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+if os.path.exists(static_dir):
+    app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
+@app.get("/dashboard")
+async def dashboard():
+    """Serve the innovation dashboard."""
+    dashboard_path = os.path.join(static_dir, "dashboard.html")
+    if os.path.exists(dashboard_path):
+        return FileResponse(dashboard_path)
+    return {"error": "Dashboard not found"}
 
 
 @app.get("/")
