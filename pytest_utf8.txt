@@ -1,0 +1,589 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0
+rootdir: C:\Users\Aadit Mathur\Desktop\hackathon
+plugins: anyio-4.10.0
+collected 46 items
+
+test_all.py .......F.....F............FFFF....FFEEEEEEEEEE               [100%]
+
+=================================== ERRORS ====================================
+_______ ERROR at setup of TestCrimeRumorSystem.test_crime_creates_rumor _______
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA77F9CB90>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+__ ERROR at setup of TestCrimeRumorSystem.test_rumor_fidelity_decays_per_hop __
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA77F9CA50>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+__ ERROR at setup of TestCrimeRumorSystem.test_personality_modulates_spread ___
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA6EB24B00>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+__ ERROR at setup of TestCrimeRumorSystem.test_npc_emotion_after_crime_rumor __
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA77EE7360>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+____ ERROR at setup of TestCrimeRumorSystem.test_behavior_modifier_applied ____
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA77F3E0F0>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+___ ERROR at setup of TestCrimeRumorSystem.test_crime_context_for_dialogue ____
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA6DE43AC0>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+_ ERROR at setup of TestCrimeRumorSystem.test_crime_awareness_persists_on_npc_state _
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA77F5C8D0>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+_ ERROR at setup of TestCrimeRumorSystem.test_relationship_delta_scales_with_severity _
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA77F22450>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+_ ERROR at setup of TestCrimeRumorSystem.test_would_believe_based_on_fidelity _
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA77F22550>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+_ ERROR at setup of TestCrimeRumorSystem.test_distortion_increases_with_low_fidelity _
+
+self = <test_all.TestCrimeRumorSystem object at 0x000001EA6E69A030>
+
+    def setup_method(self):
+        from app.models import CrimeRecord, CrimeType, RumorRecord, AwarenessLevel, NPCBehaviorModifier
+>       from app.rumor.rumor_network import RumorNetwork
+
+test_all.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\rumor\rumor_network.py:29: in <module>
+    from app.memory.engine import memory_engine, create_world_event_memory
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+================================== FAILURES ===================================
+___________________ TestEmotionEngine.test_emotion_valence ____________________
+
+self = <test_all.TestEmotionEngine object at 0x000001EA77E22F50>
+
+    def test_emotion_valence(self):
+        positive = EmotionVector(joy=0.9, trust=0.8)
+        negative = EmotionVector(fear=0.8, anger=0.9)
+        assert positive.valence() > 0
+>       assert negative.valence() < 0
+E       assert 0.008333333333333304 < 0
+E        +  where 0.008333333333333304 = valence()
+E        +    where valence = EmotionVector(joy=0.5, trust=0.5, fear=0.8, anger=0.9, sadness=0.0, surprise=0.0, disgust=0.0, anticipation=0.3).valence
+
+test_all.py:96: AssertionError
+______ TestPersonalityEngine.test_goal_priority_greed_boosts_wealth_goal ______
+
+self = <test_all.TestPersonalityEngine object at 0x000001EA77E36520>
+
+    def test_goal_priority_greed_boosts_wealth_goal(self):
+        greedy = PersonalityVector(greed=0.9)
+        goal = GOAL_LIBRARY["increase_wealth"].model_copy()
+>       neutral_goal = GOAL_LIBRARY["help_villagers"].model_copy()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'help_villagers'
+
+test_all.py:135: KeyError
+_____________ TestRumorPropagator.test_high_hop_description_vague _____________
+
+self = <test_all.TestRumorPropagator object at 0x000001EA6E6E47C0>
+
+    def test_high_hop_description_vague(self):
+        rumor = self.propagator.create_rumor_variant(self.base_event, hop=3, spreader_name="Someone")
+        # At 3 hops, should be vague
+>       assert len(rumor.description) < len(self.base_event.description)
+E       AssertionError: assert 74 < 58
+E        +  where 74 = len('There are unconfirmed rumors that something terrible happened near Someone')
+E        +    where 'There are unconfirmed rumors that something terrible happened near Someone' = WorldEvent(event_id='b6977a31-59dd-4b2f-a6af-0f9d241684c3', event_type=<EventType.RUMOR: 'rumor'>, description='There ...77a31-59dd-4b2f-a6af-0f9d241684c3', 'rumor_hop': 3, 'spreader': 'Someone', 'fidelity': 0.3}, propagates_as_rumor=False).description
+E        +  and   58 = len('The dragon Vorthex has been slain in the Eastern Mountains')
+E        +    where 'The dragon Vorthex has been slain in the Eastern Mountains' = WorldEvent(event_id='b6977a31-59dd-4b2f-a6af-0f9d241684c3', event_type=<EventType.DRAGON_KILLED: 'dragon_killed'>, des...0.0, severity=0.9, timestamp=datetime.datetime(2026, 3, 13, 12, 58, 26, 188219), metadata={}, propagates_as_rumor=True).description
+E        +      where WorldEvent(event_id='b6977a31-59dd-4b2f-a6af-0f9d241684c3', event_type=<EventType.DRAGON_KILLED: 'dragon_killed'>, des...0.0, severity=0.9, timestamp=datetime.datetime(2026, 3, 13, 12, 58, 26, 188219), metadata={}, propagates_as_rumor=True) = <test_all.TestRumorPropagator object at 0x000001EA6E6E47C0>.base_event
+
+test_all.py:266: AssertionError
+______________ TestMemoryHelpers.test_create_interaction_memory _______________
+
+self = <test_all.TestMemoryHelpers object at 0x000001EA77F9C2D0>
+
+    def test_create_interaction_memory(self):
+>       from app.memory.engine import create_interaction_memory
+
+test_all.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+______________ TestMemoryHelpers.test_create_world_event_memory _______________
+
+self = <test_all.TestMemoryHelpers object at 0x000001EA77F9C410>
+
+    def test_create_world_event_memory(self):
+>       from app.memory.engine import create_world_event_memory
+
+test_all.py:289: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+___________ TestMemoryHelpers.test_indirect_memory_lower_importance ___________
+
+self = <test_all.TestMemoryHelpers object at 0x000001EA77EE6FD0>
+
+    def test_indirect_memory_lower_importance(self):
+>       from app.memory.engine import create_world_event_memory
+
+test_all.py:302: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """
+    Memory Engine ù Hybrid Episodic / Semantic / Emotional Memory
+    with Qdrant vector similarity search.
+    
+    Retrieval Score = semantic_similarity ╫ importance ╫ recency
+    """
+    from __future__ import annotations
+    
+    import uuid
+    import math
+    from datetime import datetime, timezone
+    from typing import List, Optional, Dict, Any, Tuple
+    
+    from qdrant_client.models import (
+        PointStruct,
+        Filter,
+        FieldCondition,
+        MatchValue,
+        ScoredPoint,
+    )
+>   from sentence_transformers import SentenceTransformer
+E   ModuleNotFoundError: No module named 'sentence_transformers'
+
+app\memory\engine.py:21: ModuleNotFoundError
+_________________ TestNPCBrainMocked.test_create_npc_pipeline _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________ TestNPCBrainMocked.test_emotion_pipeline_integration _____________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+============================== warnings summary ===============================
+..\..\..\..\Anaconda\Lib\site-packages\pydantic\main.py:250: 8 warnings
+test_all.py: 17 warnings
+  C:\Anaconda\Lib\site-packages\pydantic\main.py:250: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+
+app\config.py:3
+  C:\Users\Aadit Mathur\Desktop\hackathon\app\config.py:3: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class Settings(BaseSettings):
+
+test_all.py:366
+  C:\Users\Aadit Mathur\Desktop\hackathon\test_all.py:366: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+test_all.py:393
+  C:\Users\Aadit Mathur\Desktop\hackathon\test_all.py:393: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED test_all.py::TestEmotionEngine::test_emotion_valence - assert 0.008333...
+FAILED test_all.py::TestPersonalityEngine::test_goal_priority_greed_boosts_wealth_goal
+FAILED test_all.py::TestRumorPropagator::test_high_hop_description_vague - As...
+FAILED test_all.py::TestMemoryHelpers::test_create_interaction_memory - Modul...
+FAILED test_all.py::TestMemoryHelpers::test_create_world_event_memory - Modul...
+FAILED test_all.py::TestMemoryHelpers::test_indirect_memory_lower_importance
+FAILED test_all.py::TestNPCBrainMocked::test_create_npc_pipeline - Failed: as...
+FAILED test_all.py::TestNPCBrainMocked::test_emotion_pipeline_integration - F...
+ERROR test_all.py::TestCrimeRumorSystem::test_crime_creates_rumor - ModuleNot...
+ERROR test_all.py::TestCrimeRumorSystem::test_rumor_fidelity_decays_per_hop
+ERROR test_all.py::TestCrimeRumorSystem::test_personality_modulates_spread - ...
+ERROR test_all.py::TestCrimeRumorSystem::test_npc_emotion_after_crime_rumor
+ERROR test_all.py::TestCrimeRumorSystem::test_behavior_modifier_applied - Mod...
+ERROR test_all.py::TestCrimeRumorSystem::test_crime_context_for_dialogue - Mo...
+ERROR test_all.py::TestCrimeRumorSystem::test_crime_awareness_persists_on_npc_state
+ERROR test_all.py::TestCrimeRumorSystem::test_relationship_delta_scales_with_severity
+ERROR test_all.py::TestCrimeRumorSystem::test_would_believe_based_on_fidelity
+ERROR test_all.py::TestCrimeRumorSystem::test_distortion_increases_with_low_fidelity
+============ 8 failed, 28 passed, 28 warnings, 10 errors in 2.31s =============

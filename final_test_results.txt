@@ -1,0 +1,81 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.5.0 -- C:\Anaconda\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Aadit Mathur\Desktop\hackathon
+plugins: anyio-4.10.0, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 46 items
+
+test_all.py::TestEmotionEngine::test_apply_decay_moves_toward_baseline PASSED [  2%]
+test_all.py::TestEmotionEngine::test_apply_decay_clamps_values PASSED    [  4%]
+test_all.py::TestEmotionEngine::test_attack_increases_fear_and_anger PASSED [  6%]
+test_all.py::TestEmotionEngine::test_gift_increases_trust_and_joy PASSED [  8%]
+test_all.py::TestEmotionEngine::test_brave_npc_fears_less PASSED         [ 10%]
+test_all.py::TestEmotionEngine::test_empathetic_npc_sadder PASSED        [ 13%]
+test_all.py::TestEmotionEngine::test_rumor_dampened PASSED               [ 15%]
+test_all.py::TestEmotionEngine::test_emotion_valence PASSED              [ 17%]
+test_all.py::TestEmotionEngine::test_dominant_emotion PASSED             [ 19%]
+test_all.py::TestEmotionEngine::test_emotion_to_prompt_fragment PASSED   [ 21%]
+test_all.py::TestPersonalityEngine::test_greedy_npc_dialogue_mentions_profit PASSED [ 23%]
+test_all.py::TestPersonalityEngine::test_brave_npc_tone PASSED           [ 26%]
+test_all.py::TestPersonalityEngine::test_angry_emotion_reflected_in_tone PASSED [ 28%]
+test_all.py::TestPersonalityEngine::test_goal_priority_greed_boosts_wealth_goal FAILED [ 30%]
+test_all.py::TestPersonalityEngine::test_goal_ranking_order PASSED       [ 32%]
+test_all.py::TestGOAPPlanner::test_simple_plan_found PASSED              [ 34%]
+test_all.py::TestGOAPPlanner::test_plan_with_travel_required PASSED      [ 36%]
+test_all.py::TestGOAPPlanner::test_goal_already_satisfied PASSED         [ 39%]
+test_all.py::TestGOAPPlanner::test_no_plan_when_impossible PASSED        [ 41%]
+test_all.py::TestGOAPPlanner::test_escape_plan_uses_flee PASSED          [ 43%]
+test_all.py::TestGOAPPlanner::test_plan_cost_is_reasonable PASSED        [ 45%]
+test_all.py::TestRumorPropagator::test_hop_1_rumor_has_lower_severity PASSED [ 47%]
+test_all.py::TestRumorPropagator::test_hop_2_rumor_lower_than_hop_1 PASSED [ 50%]
+test_all.py::TestRumorPropagator::test_rumor_type_is_rumor PASSED        [ 52%]
+test_all.py::TestRumorPropagator::test_hop_3_does_not_propagate PASSED   [ 54%]
+test_all.py::TestRumorPropagator::test_rumor_description_credits_spreader PASSED [ 56%]
+test_all.py::TestRumorPropagator::test_high_hop_description_vague PASSED [ 58%]
+test_all.py::TestMemoryHelpers::test_create_interaction_memory PASSED    [ 60%]
+test_all.py::TestMemoryHelpers::test_create_world_event_memory PASSED    [ 63%]
+test_all.py::TestMemoryHelpers::test_indirect_memory_lower_importance PASSED [ 65%]
+test_all.py::TestNPCState::test_npc_state_defaults PASSED                [ 67%]
+test_all.py::TestNPCState::test_personality_describe PASSED              [ 69%]
+test_all.py::TestNPCState::test_emotion_arousal PASSED                   [ 71%]
+test_all.py::TestNPCState::test_goal_status_enum PASSED                  [ 73%]
+test_all.py::TestNPCBrainMocked::test_create_npc_pipeline PASSED         [ 76%]
+test_all.py::TestNPCBrainMocked::test_emotion_pipeline_integration PASSED [ 78%]
+test_all.py::TestCrimeRumorSystem::test_crime_creates_rumor PASSED       [ 80%]
+test_all.py::TestCrimeRumorSystem::test_rumor_fidelity_decays_per_hop PASSED [ 82%]
+test_all.py::TestCrimeRumorSystem::test_personality_modulates_spread PASSED [ 84%]
+test_all.py::TestCrimeRumorSystem::test_npc_emotion_after_crime_rumor PASSED [ 86%]
+test_all.py::TestCrimeRumorSystem::test_behavior_modifier_applied FAILED [ 89%]
+test_all.py::TestCrimeRumorSystem::test_crime_context_for_dialogue PASSED [ 91%]
+test_all.py::TestCrimeRumorSystem::test_crime_awareness_persists_on_npc_state PASSED [ 93%]
+test_all.py::TestCrimeRumorSystem::test_relationship_delta_scales_with_severity PASSED [ 95%]
+test_all.py::TestCrimeRumorSystem::test_would_believe_based_on_fidelity PASSED [ 97%]
+test_all.py::TestCrimeRumorSystem::test_distortion_increases_with_low_fidelity PASSED [100%]
+
+================================== FAILURES ===================================
+______ TestPersonalityEngine.test_goal_priority_greed_boosts_wealth_goal ______
+test_all.py:141: in test_goal_priority_greed_boosts_wealth_goal
+    assert wealth_priority > help_priority, \
+E   AssertionError: Greedy NPC should prioritize wealth over helping others
+E   assert 0.8996400000000001 > 1.0
+_____________ TestCrimeRumorSystem.test_behavior_modifier_applied _____________
+test_all.py:518: in test_behavior_modifier_applied
+    murder_crime = CrimeRecord(
+                   ^^^^^^^^^^^
+E   NameError: name 'CrimeRecord' is not defined
+============================== warnings summary ===============================
+..\..\..\..\Anaconda\Lib\site-packages\pydantic\main.py:250: 8 warnings
+test_all.py: 47 warnings
+  C:\Anaconda\Lib\site-packages\pydantic\main.py:250: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+
+app\config.py:3
+  C:\Users\Aadit Mathur\Desktop\hackathon\app\config.py:3: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class Settings(BaseSettings):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED test_all.py::TestPersonalityEngine::test_goal_priority_greed_boosts_wealth_goal
+FAILED test_all.py::TestCrimeRumorSystem::test_behavior_modifier_applied - Na...
+================= 2 failed, 44 passed, 56 warnings in 14.37s ==================
