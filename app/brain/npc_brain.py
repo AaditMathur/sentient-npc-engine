@@ -38,29 +38,31 @@ logger = structlog.get_logger()
 settings = get_settings()
 
 
-# ─────────────────────────────────────────────
-# NPC REPOSITORY — PostgreSQL persistence
-# ─────────────────────────────────────────────
-
-class NPCRepository:
-    """Handles all PostgreSQL persistence for NPC state."""
-
-    async def create(self, db: AsyncSession, npc: NPCState) -> NPCState:
+# ────────────────────────────────────────�    async def create(self, db: AsyncSession, npc: NPCState) -> NPCState:
+        # Robust serialization: ensure everything is converted to dicts for JSON columns
         record = NPCRecord(
             npc_id=npc.npc_id,
             name=npc.name,
             archetype=npc.archetype,
             faction=npc.faction,
             location=npc.location,
-            personality_json=npc.personality.model_dump(),
-            emotion_state_json=npc.emotion_state.model_dump(),
-            goals_json=[g.model_dump() for g in npc.goals],
-            relationships_json={k: v.model_dump() for k, v in npc.relationships.items()},
+            personality_json=json.loads(npc.personality.model_dump_json()),
+            emotion_state_json=json.loads(npc.emotion_state.model_dump_json()),
+            goals_json=[json.loads(g.model_dump_json()) for g in npc.goals],
+            relationships_json={k: json.loads(v.model_dump_json()) for k, v in npc.relationships.items()},
             recent_memory_ids_json=npc.recent_memory_ids,
             background=npc.background,
             speech_style=npc.speech_style,
             knowledge_base_json=npc.knowledge_base,
             world_knowledge_json=npc.world_knowledge,
+            is_active=npc.is_active,
+            sim_tick=npc.sim_tick,
+            offline_ticks=npc.offline_ticks,
+        )
+        db.add(record)
+        await db.flush()
+        return npc
+ge,
             is_active=npc.is_active,
             sim_tick=npc.sim_tick,
             offline_ticks=npc.offline_ticks,
